@@ -1,0 +1,6 @@
+Operator    Operand1    Operand2    Result
+----------  ----------  ----------  --------
+-           c                       t0
+*           b           t0          t1
++           t1          t2          t2
+=           t2                      a
