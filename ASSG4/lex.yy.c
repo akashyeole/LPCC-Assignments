@@ -261,9 +261,6 @@ static void yy_flex_free YY_PROTO(( void * ));
 
 #define YY_AT_BOL() (yy_current_buffer->yy_at_bol)
 
-
-#define yywrap() 1
-#define YY_SKIP_YYWRAP
 typedef unsigned char YY_CHAR;
 FILE *yyin = (FILE *) 0, *yyout = (FILE *) 0;
 typedef int yy_state_type;
@@ -285,29 +282,29 @@ static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 	*yy_cp = '\0'; \
 	yy_c_buf_p = yy_cp;
 
-#define YY_NUM_RULES 6
-#define YY_END_OF_BUFFER 7
+#define YY_NUM_RULES 5
+#define YY_END_OF_BUFFER 6
 static yyconst short int yy_accept[10] =
     {   0,
-        0,    0,    7,    5,    4,    2,    1,    3,    0
+        0,    0,    6,    4,    2,    3,    1,    1,    0
     } ;
 
 static yyconst int yy_ec[256] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
+        1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    3,    3,    3,
-        3,    3,    3,    3,    3,    3,    3,    1,    1,    1,
-        1,    1,    1,    1,    4,    4,    4,    4,    4,    4,
-        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
-        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
-        1,    1,    1,    1,    5,    1,    4,    4,    4,    4,
+        1,    1,    1,    1,    1,    1,    1,    4,    4,    4,
+        4,    4,    4,    4,    4,    4,    4,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
 
-        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
-        4,    4,    4,    4,    4,    4,    4,    4,    4,    4,
-        4,    4,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -324,31 +321,31 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst int yy_meta[6] =
+static yyconst int yy_meta[5] =
     {   0,
-        1,    1,    1,    1,    1
+        1,    1,    1,    2
     } ;
 
-static yyconst short int yy_base[10] =
+static yyconst short int yy_base[11] =
     {   0,
-        0,    0,    6,    7,    7,    7,    7,    7,    7
+        0,    0,    6,    7,    7,    7,    0,    0,    7,    3
     } ;
 
-static yyconst short int yy_def[10] =
+static yyconst short int yy_def[11] =
     {   0,
-        9,    1,    9,    9,    9,    9,    9,    9,    0
+        9,    1,    9,    9,    9,    9,   10,   10,    0,    9
     } ;
 
-static yyconst short int yy_nxt[13] =
+static yyconst short int yy_nxt[12] =
     {   0,
         4,    5,    6,    7,    8,    9,    3,    9,    9,    9,
-        9,    9
+        9
     } ;
 
-static yyconst short int yy_chk[13] =
+static yyconst short int yy_chk[12] =
     {   0,
-        1,    1,    1,    1,    1,    3,    9,    9,    9,    9,
-        9,    9
+        1,    1,    1,    1,   10,    3,    9,    9,    9,    9,
+        9
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -362,13 +359,18 @@ static char *yy_last_accepting_cpos;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "valid_variable.l"
+#line 1 "arithmetic.l"
 #define INITIAL 0
-#line 2 "valid_variable.l"
-    #include "valid_variable.tab.h"
+#line 2 "arithmetic.l"
+    // To evaluate an arithmetic expression using YACC tool
+    // Name: Akash Yeole
+    // Roll. No.: 321092
+    // Gr. No.: 22120281
+    // Batch: A3
     #include<stdio.h>
-    #include<stdlib.h>
-#line 372 "lex.yy.c"
+    #include "arithmetic.tab.h"
+    extern int yylval;
+#line 374 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -519,9 +521,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 7 "valid_variable.l"
+#line 12 "arithmetic.l"
 
-#line 525 "lex.yy.c"
+#line 527 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -606,32 +608,30 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 8 "valid_variable.l"
-return A;
+#line 13 "arithmetic.l"
+{
+          yylval = atoi(yytext);
+          return NUMBER;
+       }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 9 "valid_variable.l"
-return N;
+#line 17 "arithmetic.l"
+;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 10 "valid_variable.l"
-return U;
+#line 18 "arithmetic.l"
+return 0;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 11 "valid_variable.l"
-return 0;
+#line 19 "arithmetic.l"
+return yytext[0];
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 12 "valid_variable.l"
-return yytext[0];
-	YY_BREAK
-case 6:
-YY_RULE_SETUP
-#line 13 "valid_variable.l"
+#line 20 "arithmetic.l"
 ECHO;
 	YY_BREAK
 #line 638 "lex.yy.c"
@@ -1520,4 +1520,9 @@ int main()
 	return 0;
 	}
 #endif
-#line 13 "valid_variable.l"
+#line 20 "arithmetic.l"
+
+
+int yywrap() {
+    return 1;
+}

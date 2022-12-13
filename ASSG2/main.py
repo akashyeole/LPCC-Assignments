@@ -5,7 +5,7 @@
 
 from MacroProcessor import MacroProcessor
 def main():
-    mp = MacroProcessor("input.txt")
+    mp = MacroProcessor("ASSG2/input.txt")
     try:
         mp.ProcessMacro()
     except Exception as e:

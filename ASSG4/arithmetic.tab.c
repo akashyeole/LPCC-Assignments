@@ -1313,7 +1313,7 @@ yyreduce:
 /* Line 1455 of yacc.c  */
 #line 14 "arithmetic.y"
     {
-            printf("\nResult=%d\n",(yyval));
+            printf("\nResult=: %d\n",(yyval));
             return 0;
 ;}
     break;

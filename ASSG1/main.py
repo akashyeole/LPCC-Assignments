@@ -6,7 +6,7 @@
 from Assembler import Assembler
 
 def main():
-    assembler = Assembler("input3.txt")
+    assembler = Assembler("ASSG1/input3.txt")
     try:
         assembler.assemble()
     except Exception as e:

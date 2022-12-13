@@ -38,19 +38,6 @@ class Assembler:
             tokens.extend(deepcopy([comma_separated_data.strip().upper() for comma_separated_data in space_separated_data.strip().split(',') if comma_separated_data != '']))
         return tokens
 
-    # Process the input cleaned input file line-by-line
-    def __ProcessInput(self):
-        target_file = open(self.CLEAN_FILE, "r")
-        output_file = open(self.INTERMEDIATE_CODE, "w" )
-
-        for line in target_file:
-            tokens = self.__tokenize(line.strip())
-            self.__ProcessTokens(output_file, tokens)
-            output_file.write("\n")
-        
-        target_file.close()
-        output_file.close()
-    
     # Analyzes the the token makes the reuired entries in symbol and literal tables.
     def __SymbolAndLiteralAnalyzer(self, output_file, token):
         if(len(token) > 3 and token[:2] == "='" and token[-1] == "'"):
@@ -137,7 +124,6 @@ class Assembler:
 
                     self.LC += 1
 
-        
         else: # If 1st token is Symbol and not EMOT
             for symbol in self.SYMBOL_TABLE:
                 if symbol.name == tokens[0]:
@@ -158,6 +144,19 @@ class Assembler:
                 self.SYMBOL_TABLE.append(SYMBOL(str(self.SYMBOL_COUNTER), tokens[0], str(self.LC)))
             self.__ProcessTokens(output_file, tokens[1:])
 
+    # Process the input cleaned input file line-by-line
+    def __ProcessInput(self):
+        target_file = open(self.CLEAN_FILE, "r")
+        output_file = open(self.INTERMEDIATE_CODE, "w" )
+
+        for line in target_file:
+            tokens = self.__tokenize(line.strip())
+            self.__ProcessTokens(output_file, tokens)
+            output_file.write("\n")
+        
+        target_file.close()
+        output_file.close()
+    
     # Printing the tables finnaly on the console
     def __PrintTables(self):
         print("SYMBOL TABLE:")
