@@ -1,40 +1,64 @@
 %{
-    #include<stdio.h>
-    int flag=0;
+    #include<iostream>
+    #include<bits/stdc++.h>
+    using namespace std;
+    int f = 0;
     int yylex();
-    void yyerror(const char *s);
-   
+    void yyerror(string s);
 %}
-%token NUMBER
 
+%token NUMBER
 %left '+' '-'
 %left '*' '/' '%'
 %left '(' ')'
+
 %%
-ArithmeticExpression: E {
-            printf("\nResult=: %d\n",$$);
-            return 0;
+
+AE : E {
+    cout << "Result = " << $$  << endl;
+    return 0;
 }
+
 E : 
-E '+' E {$$=$1+$3;}
-| E '-' E {$$=$1-$3;}
-| E '*' E {$$=$1*$3;}
-| E '/' E {$$=$1/$3;}
-| E '%' E {$$=$1%$3;}
-|'(' E ')' {$$=$2;}
-| NUMBER {$$=$1;}
-;
+E '+' E { $$ = $1 + $3; } |
+E '-' E { $$ = $1 - $3; } |
+E '*' E { $$ = $1 * $3; } |
+E '/' E { 
+   if($3 == 0) {
+        yyerror("Cannot DIVIDE by 0!");
+        return 0;
+   }
+   else{
+        $$ = $1 / $3;
+   }
+} |
+E '%' E { 
+   if($3 == 0) {
+        yyerror("Cannot MOD by 0!");
+        return 0;
+   }
+   else{
+        $$ = $1 % $3;
+   }
+} |
+'(' E ')' { $$ = $2; }
+| NUMBER { $$ = $1; } ;
+
 %%
 
 int main() {
-    printf("\nEnter Any Arithmetic Expression that includes (*, +, -, /, %): ");
+    cout << "\nEnter arithmetic expression: ";
     yyparse();
-    if(flag==0)
-        printf("\nEntered arithmetic expression was valid one\n");
+    if(f == 0){
+        cout << "Arithmetic expression is VALID." << endl;
+    }
+    cout << endl;
     return 0;
- 
 }
-void yyerror(const char *s) {
-   printf("\nEntered arithmetic expression was Invalid\n");
-   flag=1;
+
+void yyerror(string s) {
+    cout << "Arithemtic expression is INVALID.\n";
+    cout << "ERROR: " << s << endl;
+    f = 1;
+    return;
 }
