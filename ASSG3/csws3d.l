@@ -69,7 +69,7 @@
     state = 13;
 }
 
-[a-zA-Z0-9]+ {
+[\+-\|!&=<>;a-zA-Z0-9]+ {
     string token(yytext);
     if(state) {
         addToken(state, token);
